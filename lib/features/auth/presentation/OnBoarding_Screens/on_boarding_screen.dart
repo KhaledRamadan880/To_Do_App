@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:to_do_app/core/common/common.dart';
 import 'package:to_do_app/core/database/database.dart';
 import 'package:to_do_app/core/services/service_locator.dart';
+import 'package:to_do_app/core/widgets/custom_elevated_button.dart';
 
-import '../../../core/util/colors.dart';
-import '../../../core/util/strings.dart';
-import '../../auth/data/model/on_boarding_model.dart';
-import 'home_screen.dart';
+import '../../../../core/util/colors.dart';
+import '../../../../core/util/strings.dart';
+import '../../../../core/widgets/custom_text_button.dart';
+import '../../data/model/on_boarding_model.dart';
+import '../../../task/screens/home-screen/home_screen.dart';
 
 // ignore: must_be_immutable
 class OnBoardingScreen extends StatelessWidget {
@@ -28,21 +31,12 @@ class OnBoardingScreen extends StatelessWidget {
                 index != 2
                     ? Align(
                         alignment: FractionalOffset.topLeft,
-                        child: TextButton(
-                          onPressed: () {
+                        child: CustomTextButton(
+                          text: AppStrings.skip,
+                          onpressed: () {
                             controller.jumpToPage(2);
                           },
-                          child: Text(
-                            AppStrings.skip,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium!
-                                .copyWith(
-                                  color: AppColors.white.withOpacity(0.44),
-                                ),
-                          ),
-                        ),
-                      )
+                        ))
                     : Container(),
                 const SizedBox(height: 15),
                 // image
@@ -70,49 +64,38 @@ class OnBoardingScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const SizedBox(height: 70),
-                // next button
+                // bottom buttons
                 Row(
                   children: [
                     // back button
                     index != 0
-                        ? TextButton(
-                            onPressed: () {
+                        ? CustomTextButton(
+                            text: AppStrings.back,
+                            onpressed: () {
                               controller.previousPage(
                                   duration: const Duration(milliseconds: 400),
                                   curve: Curves.bounceIn);
-                            },
-                            child: Text(
-                              AppStrings.back,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium!
-                                  .copyWith(
-                                      color: AppColors.white.withOpacity(0.44)),
-                            ),
-                          )
+                            })
                         : Container(),
                     const Spacer(),
                     // next button
                     index != 2
-                        ? ElevatedButton(
-                            onPressed: () {
+                        ? CustomElevatedButton(
+                            text: AppStrings.next,
+                            onpressed: () {
                               controller.nextPage(
                                   duration: const Duration(milliseconds: 400),
                                   curve: Curves.bounceIn);
-                            },
-                            child: const Text(AppStrings.next),
-                          )
+                            })
                         : ElevatedButton(
                             onPressed: () async {
-                              await serviceLocator<Cach>().saveData(
-                                      key: 'onBoarding', value: 'true')
+                              await serviceLocator<Cach>()
+                                  .saveData(key: 'onBoarding', value: 'true')
                                   .then((value) {
                                 print('visited');
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const HomeScreen()));
+                                navigator(
+                                    context: context,
+                                    screen: const HomeScreen());
                               });
                             },
                             style: Theme.of(context)

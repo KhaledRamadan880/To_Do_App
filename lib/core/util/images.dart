@@ -4,5 +4,6 @@ class AppImages {
   static const String on_1 = '${basePath}on_1.png';
   static const String on_2 = '${basePath}on_2.png';
   static const String on_3 = '${basePath}on_3.png';
+  static const String no_task = '${basePath}no_task.png';
   
 }

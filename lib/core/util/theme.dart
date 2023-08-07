@@ -19,6 +19,10 @@ ThemeData AppTheme() {
         fontSize: 16,
         color: AppColors.white,
       ),
+      displayMedium: GoogleFonts.lato(
+        fontSize: 24,
+        color: AppColors.white,
+      ),
     ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -26,7 +30,7 @@ ThemeData AppTheme() {
         backgroundColor: AppColors.primary,
         fixedSize: const Size(90, 48),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(8),
         ),
       ),
     ),
