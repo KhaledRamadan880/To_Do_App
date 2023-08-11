@@ -72,7 +72,7 @@ class TaskCubit extends Cubit<TaskState> {
   //! Get Date for Task
   void getSelectedDate(date) {
     emit(GetDataSelectedLoadingState());
-    currentDate = date;
+    selectedDate = date;
     emit(GetDataSelectedSuccussedState());
     getTasks();
   }
@@ -92,7 +92,7 @@ class TaskCubit extends Cubit<TaskState> {
       ));
       getTasks();
       titleController.clear();
-      noteController.clear();
+      noteController.clear();      
       emit(InsertTaskSuccessedState());
     } catch (e) {
       emit(InsertTaskErrorState());
@@ -106,7 +106,7 @@ class TaskCubit extends Cubit<TaskState> {
       taskList = value
           .map((e) => TaskModel.fromJson(e))
           .toList()
-          .where((element) => element.date ==  DateFormat.yMd().format(currentDate))
+          .where((element) => element.date ==  DateFormat.yMd().format(selectedDate))
           .toList();
       emit(GetTaskSuccessedState());
     }).catchError((e) {
