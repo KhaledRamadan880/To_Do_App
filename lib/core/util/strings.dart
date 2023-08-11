@@ -38,4 +38,10 @@ class AppStrings {
   static const String endTime = 'End Time';
   static const String color = 'Color';
   static const String createTask = 'Create Task';
+
+  static const String todo = 'TODO';
+  static const String completed = 'COMPLETED';
+
+  static const String titeleValid = 'Enter Title';
+  static const String noteValid = 'Enter Note';
 }

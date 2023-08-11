@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:to_do_app/core/common/common.dart';
-import 'package:to_do_app/core/database/database.dart';
+import 'package:to_do_app/core/database/cash/database.dart';
 import 'package:to_do_app/core/services/service_locator.dart';
 import 'package:to_do_app/core/widgets/custom_elevated_button.dart';
-
 import '../../../../core/util/colors.dart';
 import '../../../../core/util/strings.dart';
 import '../../../../core/widgets/custom_text_button.dart';
 import '../../data/model/on_boarding_model.dart';
 import '../../../task/screens/home-screen/home_screen.dart';
 
-// ignore: must_be_immutable
+
 class OnBoardingScreen extends StatelessWidget {
-  PageController controller = PageController();
+  final PageController controller = PageController();
 
   OnBoardingScreen({super.key});
   @override
@@ -23,26 +23,29 @@ class OnBoardingScreen extends StatelessWidget {
         controller: controller,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.all(24),
+            padding: EdgeInsets.all(24.h),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // skip button
+
+                //! Skip button
                 index != 2
                     ? Align(
                         alignment: FractionalOffset.topLeft,
-                        child: CustomTextButton(
-                          text: AppStrings.skip,
-                          onpressed: () {
-                            controller.jumpToPage(2);
-                          },
+                          child: CustomTextButton(
+                            text: AppStrings.skip,
+                            onpressed: () {
+                              controller.jumpToPage(2);
+                            },
                         ))
                     : Container(),
-                const SizedBox(height: 15),
-                // image
+                SizedBox(height: 15.h),
+
+                //! Image
                 Image.asset(OnBoardingModel.onBoardingScreen[index].image),
-                const SizedBox(height: 40),
-                // Dots
+                SizedBox(height: 40.h),
+
+                //! Dots
                 SmoothPageIndicator(
                   controller: controller,
                   count: 3,
@@ -52,22 +55,25 @@ class OnBoardingScreen extends StatelessWidget {
                     spacing: 8,
                   ),
                 ),
-                const SizedBox(height: 10),
-                //title
+                SizedBox(height: 10.h),
+
+                //! Title
                 Text(OnBoardingModel.onBoardingScreen[index].title,
                     style: Theme.of(context).textTheme.titleLarge),
-                const SizedBox(height: 10),
-                // subtitle
+                SizedBox(height: 10.h),
+
+                //! Subtitle
                 Text(
                   OnBoardingModel.onBoardingScreen[index].subTitle,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                const SizedBox(height: 70),
-                // bottom buttons
+                SizedBox(height: 70.h),
+
+                //! bottom buttons
                 Row(
                   children: [
-                    // back button
+                    //! back button
                     index != 0
                         ? CustomTextButton(
                             text: AppStrings.back,
@@ -78,7 +84,8 @@ class OnBoardingScreen extends StatelessWidget {
                             })
                         : Container(),
                     const Spacer(),
-                    // next button
+                    
+                    //! next button
                     index != 2
                         ? CustomElevatedButton(
                             text: AppStrings.next,
@@ -92,7 +99,7 @@ class OnBoardingScreen extends StatelessWidget {
                               await serviceLocator<Cach>()
                                   .saveData(key: 'onBoarding', value: 'true')
                                   .then((value) {
-                                print('visited');
+                                // print('visited');
                                 navigator(
                                     context: context,
                                     screen: const HomeScreen());
@@ -102,8 +109,8 @@ class OnBoardingScreen extends StatelessWidget {
                                 .elevatedButtonTheme
                                 .style!
                                 .copyWith(
-                                  fixedSize: const MaterialStatePropertyAll(
-                                      Size(151, 48)),
+                                  fixedSize: MaterialStatePropertyAll(
+                                      Size(151.w, 48.h)),
                                 ),
                             child: const Text(AppStrings.getStart),
                           ),

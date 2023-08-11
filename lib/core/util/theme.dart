@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'colors.dart';
 
-ThemeData AppTheme() {
+ThemeData appTheme() {
   return ThemeData(
-    // background color
+    //! Background color
     scaffoldBackgroundColor: AppColors.background,
-    // text theme
+    //! text theme
     textTheme: TextTheme(
-      // title
+      //! Title
       titleLarge: GoogleFonts.lato(
         fontSize: 32,
         color: AppColors.white,
       ),
-      // subtitle
+      //! Subtitle
       titleMedium: GoogleFonts.lato(
         fontSize: 16,
         color: AppColors.white,
@@ -24,11 +25,12 @@ ThemeData AppTheme() {
         color: AppColors.white,
       ),
     ),
-
+    
+    //! ElevaredButton 
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primary,
-        fixedSize: const Size(90, 48),
+        fixedSize: Size(90.w, 48.h),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         ),

@@ -3,9 +3,9 @@ import '../../../../core/util/images.dart';
 import '../../../../core/util/strings.dart';
 
 class OnBoardingModel {
-  final image;
-  final title;
-  final subTitle;
+  final String image;
+  final String title;
+  final String subTitle;
 
   OnBoardingModel({
     required this.image,

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../util/colors.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  CustomElevatedButton(
+  const CustomElevatedButton(
       {super.key,
       required this.text,
       required this.onpressed,
@@ -11,7 +11,7 @@ class CustomElevatedButton extends StatelessWidget {
 
   final String text;
   final VoidCallback onpressed;
-  Color? backgroundColor;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {

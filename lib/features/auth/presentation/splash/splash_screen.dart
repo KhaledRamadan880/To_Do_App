@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:to_do_app/features/task/screens/home-screen/home_screen.dart';
-import '../../../../core/database/database.dart';
+import '../../../../core/database/cash/database.dart';
 import '../../../../core/services/service_locator.dart';
 import '../../../../core/util/colors.dart';
 import '../../../../core/util/images.dart';
@@ -16,6 +16,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  
   @override
   void initState() {
     super.initState();

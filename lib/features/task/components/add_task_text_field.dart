@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/util/colors.dart';
 
@@ -10,6 +11,7 @@ class AddTaskTxtField extends StatelessWidget {
     this.suffixIcon,
     this.controller,
     this.enabled = false,
+    this.validator,
   });
 
   final TextEditingController? controller;
@@ -17,21 +19,26 @@ class AddTaskTxtField extends StatelessWidget {
   final String hintText;
   final Widget? suffixIcon;
   final bool enabled;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        //! Title
         Text(
           title,
           style: Theme.of(context).textTheme.titleMedium,
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8.h),
+        
+        //! TextField
         TextFormField(
           readOnly: enabled,
           controller: controller,
           cursorColor: AppColors.white,
+          validator: validator,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(12),
             hintText: hintText,
@@ -58,7 +65,7 @@ class AddTaskTxtField extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 24),
+        SizedBox(height: 24.h),
       ],
     );
   }

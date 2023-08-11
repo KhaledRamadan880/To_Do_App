@@ -18,7 +18,6 @@ class Cach {
       return await sharedPreferences.setString(key, value);
     } else if (value is int) {
       return await sharedPreferences.setInt(key, value);
-    }
-    
+    }    
   }
 }
