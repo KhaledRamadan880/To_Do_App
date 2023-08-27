@@ -20,18 +20,19 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    String? isVisited =
-        serviceLocator<Cach>().getDataString(key: 'onBoarding') ?? 'false';
+    bool isVisited =
+        serviceLocator<Cach>().getData(key: 'onBoarding') ?? false;
     Future.delayed(
       const Duration(seconds: 5),
       () => Navigator.push(context, MaterialPageRoute(builder: (context) {
-        if (isVisited == 'true') {
+        if (isVisited == true) {
           return const HomeScreen();
         }
         return OnBoardingScreen();
       })),
     );
   }
+ 
 
   @override
   Widget build(BuildContext context) {

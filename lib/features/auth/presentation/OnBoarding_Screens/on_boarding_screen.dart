@@ -97,7 +97,7 @@ class OnBoardingScreen extends StatelessWidget {
                         : ElevatedButton(
                             onPressed: () async {
                               await serviceLocator<Cach>()
-                                  .saveData(key: 'onBoarding', value: 'true')
+                                  .saveData(key: 'onBoarding', value: true)
                                   .then((value) {
                                 // print('visited');
                                 navigator(
