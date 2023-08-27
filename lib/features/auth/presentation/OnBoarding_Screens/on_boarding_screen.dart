@@ -11,7 +11,6 @@ import '../../../../core/widgets/custom_text_button.dart';
 import '../../data/model/on_boarding_model.dart';
 import '../../../task/screens/home-screen/home_screen.dart';
 
-
 class OnBoardingScreen extends StatelessWidget {
   final PageController controller = PageController();
 
@@ -27,18 +26,19 @@ class OnBoardingScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
                 //! Skip button
                 index != 2
                     ? Align(
                         alignment: FractionalOffset.topLeft,
-                          child: CustomTextButton(
-                            text: AppStrings.skip,
-                            onpressed: () {
-                              controller.jumpToPage(2);
-                            },
+                        child: CustomTextButton(
+                          text: AppStrings.skip,
+                          onpressed: () {
+                            controller.jumpToPage(2);
+                          },
                         ))
-                    : Container(),
+                    : Container(
+                        height: 50,
+                      ),
                 SizedBox(height: 15.h),
 
                 //! Image
@@ -69,7 +69,7 @@ class OnBoardingScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 SizedBox(height: 70.h),
-
+                // const Spacer(),
                 //! bottom buttons
                 Row(
                   children: [
@@ -84,7 +84,7 @@ class OnBoardingScreen extends StatelessWidget {
                             })
                         : Container(),
                     const Spacer(),
-                    
+
                     //! next button
                     index != 2
                         ? CustomElevatedButton(
@@ -99,7 +99,6 @@ class OnBoardingScreen extends StatelessWidget {
                               await serviceLocator<Cach>()
                                   .saveData(key: 'onBoarding', value: true)
                                   .then((value) {
-                                // print('visited');
                                 navigator(
                                     context: context,
                                     screen: const HomeScreen());

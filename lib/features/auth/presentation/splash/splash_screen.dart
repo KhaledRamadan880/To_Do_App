@@ -16,23 +16,21 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  
   @override
   void initState() {
     super.initState();
-    bool isVisited =
-        serviceLocator<Cach>().getData(key: 'onBoarding') ?? false;
+    bool isVisited = serviceLocator<Cach>().getData(key: 'onBoarding') ?? false;
     Future.delayed(
       const Duration(seconds: 5),
       () => Navigator.push(context, MaterialPageRoute(builder: (context) {
-        if (isVisited == true) {
-          return const HomeScreen();
-        }
-        return OnBoardingScreen();
+        // if (isVisited == true) {
+        // return const HomeScreen();
+        // }
+        // return OnBoardingScreen();
+        return isVisited == true ? const HomeScreen() : OnBoardingScreen();
       })),
     );
   }
- 
 
   @override
   Widget build(BuildContext context) {
