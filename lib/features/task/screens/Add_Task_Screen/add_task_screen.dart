@@ -19,8 +19,10 @@ class AddTaskScreen extends StatelessWidget {
     return Scaffold(
       //! AppBar
       appBar: AppBar(
-        title: Text('Add Task', style: Theme.of(context).textTheme.titleLarge),
-        backgroundColor: AppColors.background,
+        title: Text(
+          'Add Task',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
         elevation: 0,
         leading: IconButton(
             onPressed: () {
@@ -84,7 +86,6 @@ class AddTaskScreen extends StatelessWidget {
                     //! start & end time
                     Row(
                       children: [
-
                         //! Start Time
                         Expanded(
                           child: AddTaskTxtField(
@@ -173,7 +174,7 @@ class AddTaskScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    
+
                     //! Create Task Button
                     SizedBox(height: 80.h),
                     state is InsertTaskLoadingState

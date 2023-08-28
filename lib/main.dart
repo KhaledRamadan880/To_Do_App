@@ -13,7 +13,7 @@ void main() async {
   serviceLocator<SqlFLiteHelper>().initDB();  
   await serviceLocator<Cach>().init();  
   runApp(BlocProvider(
-    create: (context) => TaskCubit()..getTasks(),
+    create: (context) => TaskCubit()..getTheme()..getTasks(),
     child: const MyApp(),
   ));
 }

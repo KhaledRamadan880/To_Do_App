@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:to_do_app/core/database/cash/database.dart';
 import 'package:to_do_app/core/database/sqlflite_helper/sqlflite_helper.dart';
 import 'package:to_do_app/features/task/cubit/task_state.dart';
 
@@ -22,7 +23,7 @@ class TaskCubit extends Cubit<TaskState> {
   num currentIndex = 0;
   List<TaskModel> taskList = [];
 
-  //! Get Date 
+  //! Get Date
   void getDate(context) async {
     emit(GetDataLoadingState());
     DateTime? datePicker = await showDatePicker(
@@ -37,7 +38,7 @@ class TaskCubit extends Cubit<TaskState> {
     }
   }
 
-  //! Get Start Time 
+  //! Get Start Time
   void getStartTime(context) async {
     emit(GetStartTimeLoadingState());
     TimeOfDay? timePicker = await showTimePicker(
@@ -50,7 +51,7 @@ class TaskCubit extends Cubit<TaskState> {
     }
   }
 
-  //! Get End Time 
+  //! Get End Time
   void getEndTime(context) async {
     emit(GetEndTimeLoadingState());
     TimeOfDay? timePicker = await showTimePicker(
@@ -63,7 +64,7 @@ class TaskCubit extends Cubit<TaskState> {
     }
   }
 
-  //! Mark Task Color 
+  //! Mark Task Color
   void getColorCheck(index) {
     currentIndex = index;
     emit(GetColorIndexState());
@@ -92,7 +93,7 @@ class TaskCubit extends Cubit<TaskState> {
       ));
       getTasks();
       titleController.clear();
-      noteController.clear();      
+      noteController.clear();
       emit(InsertTaskSuccessedState());
     } catch (e) {
       emit(InsertTaskErrorState());
@@ -106,7 +107,8 @@ class TaskCubit extends Cubit<TaskState> {
       taskList = value
           .map((e) => TaskModel.fromJson(e))
           .toList()
-          .where((element) => element.date ==  DateFormat.yMd().format(selectedDate))
+          .where((element) =>
+              element.date == DateFormat.yMd().format(selectedDate))
           .toList();
       emit(GetTaskSuccessedState());
     }).catchError((e) {
@@ -133,5 +135,29 @@ class TaskCubit extends Cubit<TaskState> {
     await serviceLocator<SqlFLiteHelper>().deleteFromDB(id);
     emit(DeleteTaskSuccessedState());
     getTasks();
+  }
+
+  final switchController = ValueNotifier<bool>(false);
+  bool isDark = false;
+
+  switchButton() {
+    switchController.addListener(() {
+      if (switchController.value) {
+        isDark = true;
+      } else {
+        isDark = false;
+      }
+    });
+  }
+
+  changeTheme(newVal) {
+    isDark = !isDark;
+    serviceLocator<Cach>().saveData(key: 'isDark', value: newVal);
+    emit(ChangeThemeState());
+  }
+
+  void getTheme() {
+    isDark = serviceLocator<Cach>().getData(key: 'isDark') ?? true;
+    emit(GetThemeState());
   }
 }

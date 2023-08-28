@@ -46,12 +46,35 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //! date
-                  Text(
-                    DateFormat.yMMMd().format(DateTime.now()),
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(fontSize: 24),
+                  Row(
+                    children: [
+                      Text(
+                        DateFormat.yMMMd().format(DateTime.now()),
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge!
+                            .copyWith(fontSize: 24),
+                      ),
+                      const Spacer(),
+                      const Icon(
+                        Icons.light_mode,
+                        color: AppColors.background,
+                      ),
+                      //! Switch Button
+                      Switch(
+                        
+                        value: BlocProvider.of<TaskCubit>(context).isDark,
+                        onChanged: (newValue) {
+                          BlocProvider.of<TaskCubit>(context)
+                              .changeTheme(newValue);
+                        },
+                        activeColor: AppColors.white,
+                      ),
+                      const Icon(
+                        Icons.dark_mode,
+                        color: AppColors.white,
+                      ),
+                    ],
                   ),
                   SizedBox(height: 12.h),
 

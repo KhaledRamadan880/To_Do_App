@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/util/colors.dart';
 
 class AddTaskTxtField extends StatelessWidget {
-  const AddTaskTxtField(  {
+  const AddTaskTxtField({
     super.key,
     required this.title,
     required this.hintText,
@@ -32,36 +31,29 @@ class AddTaskTxtField extends StatelessWidget {
           style: Theme.of(context).textTheme.titleMedium,
         ),
         SizedBox(height: 8.h),
-        
+
         //! TextField
         TextFormField(
           readOnly: enabled,
-          controller: controller,
-          cursorColor: AppColors.white,
+          controller: controller,          
           validator: validator,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(12),
-            hintText: hintText,
-            hintStyle: const TextStyle(color: AppColors.white),
-            suffixIcon: suffixIcon,
-            suffixIconColor: AppColors.white,
-            fillColor: AppColors.darkGrey,
+            hintText: hintText,            
+            suffixIcon: suffixIcon,                        
             filled: true,
             disabledBorder: const OutlineInputBorder(
-                borderSide: BorderSide(
-              color: AppColors.white,
-            )),
+                borderSide: BorderSide(                    
+                    )),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4),
-              borderSide: const BorderSide(
-                color: AppColors.white,
-              ),
+              borderSide: const BorderSide(                  
+                  ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4),
-              borderSide: const BorderSide(
-                color: AppColors.white,
-              ),
+              borderSide: const BorderSide(                  
+                  ),
             ),
           ),
         ),
