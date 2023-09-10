@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:to_do_app/core/util/colors.dart';
 
 class AddTaskTxtField extends StatelessWidget {
   const AddTaskTxtField({
@@ -35,25 +35,21 @@ class AddTaskTxtField extends StatelessWidget {
         //! TextField
         TextFormField(
           readOnly: enabled,
-          controller: controller,          
+          controller: controller,
           validator: validator,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(12),
-            hintText: hintText,            
-            suffixIcon: suffixIcon,                        
+            hintText: hintText,
+            suffixIcon: suffixIcon,
             filled: true,
-            disabledBorder: const OutlineInputBorder(
-                borderSide: BorderSide(                    
-                    )),
+            disabledBorder: const OutlineInputBorder(borderSide: BorderSide()),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4),
-              borderSide: const BorderSide(                  
-                  ),
+              borderSide: const BorderSide(color: AppColors.deepGrey),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4),
-              borderSide: const BorderSide(                  
-                  ),
+              borderSide: const BorderSide(),
             ),
           ),
         ),

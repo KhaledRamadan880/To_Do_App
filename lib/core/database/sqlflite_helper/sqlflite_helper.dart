@@ -5,7 +5,7 @@ class SqlFLiteHelper {
   late Database db;
 
   //! Initial DataBase
-  void initDB() async {
+  Future<void> initDB() async {
     db = await openDatabase(
       'TODO',
       version: 1,

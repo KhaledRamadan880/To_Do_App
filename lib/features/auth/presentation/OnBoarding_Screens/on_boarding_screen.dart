@@ -26,6 +26,7 @@ class OnBoardingScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(height: 20),
                 //! Skip button
                 index != 2
                     ? Align(
@@ -39,7 +40,7 @@ class OnBoardingScreen extends StatelessWidget {
                     : Container(
                         height: 50,
                       ),
-                SizedBox(height: 15.h),
+                SizedBox(height: 70.h),
 
                 //! Image
                 Image.asset(OnBoardingModel.onBoardingScreen[index].image),
@@ -69,7 +70,7 @@ class OnBoardingScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 SizedBox(height: 70.h),
-                // const Spacer(),
+                const Spacer(),
                 //! bottom buttons
                 Row(
                   children: [

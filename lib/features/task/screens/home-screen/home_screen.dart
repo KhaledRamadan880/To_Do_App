@@ -61,8 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: AppColors.background,
                       ),
                       //! Switch Button
-                      Switch(
-                        
+                      Switch(                        
                         value: BlocProvider.of<TaskCubit>(context).isDark,
                         onChanged: (newValue) {
                           BlocProvider.of<TaskCubit>(context)
@@ -125,8 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           child: Column(
                                             children: [
                                               // Task Complete
-                                              BlocProvider.of<TaskCubit>(
-                                                              context)
+                                              BlocProvider.of<TaskCubit>(context)
                                                           .taskList[index]
                                                           .complete ==
                                                       0
@@ -156,7 +154,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   : Container(),
                                               SizedBox(height: 24.h),
                                               // Task Delete
-                                              SizedBox(
+                                              BlocProvider.of<TaskCubit>(context).taskList.isEmpty
+                                              ? Container()
+                                              : SizedBox(
                                                 height: 48.h,
                                                 width: double.infinity,
                                                 child: CustomElevatedButton(

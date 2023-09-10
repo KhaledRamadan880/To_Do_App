@@ -131,10 +131,15 @@ class TaskCubit extends Cubit<TaskState> {
 
   //! Delete
   void deleteTasks(id) async {
-    emit(DeleteTaskLoadingState());
+    try {
+      emit(DeleteTaskLoadingState());
     await serviceLocator<SqlFLiteHelper>().deleteFromDB(id);
     emit(DeleteTaskSuccessedState());
-    getTasks();
+    await getTasks();
+    } catch (e) {
+      print(e.toString());      
+    }
+
   }
 
   final switchController = ValueNotifier<bool>(false);

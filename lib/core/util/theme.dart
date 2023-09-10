@@ -43,7 +43,7 @@ ThemeData appDarkTheme() {
       hintStyle: TextStyle(
         color: AppColors.white,
       ),
-      suffixIconColor: AppColors.white,
+      suffixIconColor: AppColors.white,              
     ),
 
     //! AppBar

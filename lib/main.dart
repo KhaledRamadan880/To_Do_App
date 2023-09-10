@@ -10,7 +10,7 @@ import 'features/task/cubit/task_cubit.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setup();
-  serviceLocator<SqlFLiteHelper>().initDB();  
+  await serviceLocator<SqlFLiteHelper>().initDB();  
   await serviceLocator<Cach>().init();  
   runApp(BlocProvider(
     create: (context) => TaskCubit()..getTheme()..getTasks(),
